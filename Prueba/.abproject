@@ -1,11 +1,11 @@
 {
   "ProjectName": "Prueba",
-  "ProjectGuid": "ad79e8d3-504c-44f5-8940-9e5bc13a163e",
+  "ProjectGuid": "15b89fd3-143a-4da8-9d17-fe8f19c09e31",
   "projectVersion": 1,
-  "AppIdentifier": "com.telerik.Prueba",
-  "DisplayName": "Prueba",
-  "Author": "",
-  "Description": "Prueba",
+  "AppIdentifier": "com.telerik.YapaKPI",
+  "DisplayName": "YapaKPI",
+  "Author": "Letrecorp SA",
+  "Description": "YapaKPI",
   "BundleVersion": "1.0",
   "AndroidVersionCode": "1",
   "iOSDeviceFamily": [

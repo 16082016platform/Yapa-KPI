@@ -12,7 +12,7 @@ function onBack() {
 function onIndex() {
     var topmost = frameModule.topmost();
 
-    topmost.navigate('navigation/navigation');
+    topmost.navigate('components/indicadores/indicadores');
 }
 
 exports.onBack = onBack;

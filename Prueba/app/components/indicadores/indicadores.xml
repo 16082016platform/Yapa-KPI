@@ -1,0 +1,25 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" xmlns:widgets="utils/widgets" loaded="pageLoaded" id="indicadoresScreen" cssClass="screen">
+    <Page.actionBar>
+        <widgets:action-bar />
+    </Page.actionBar>
+    <StackLayout>
+        <GridLayout columns="*,*" rows="*,*" >
+            <GridLayout row="0" col="0" columns="*" rows="*,auto" cssClass="grid-container" chart="bar" tap="buttonTap">
+                <Image src="~/images/indicadores/1.png" stretch="aspectFit" />
+                <Label row="1" textWrap="true" text="Tiempo de atención" />
+            </GridLayout>
+            <GridLayout row="0" col="1" columns="*" rows="*,auto" cssClass="grid-container" chart="pie" tap="buttonTap">
+                <Image src="~/images/indicadores/2.png" stretch="aspectFit" />
+                <Label row="1" textWrap="true" text="Categorías más solicitadas"  />
+            </GridLayout>
+            <GridLayout row="1" col="0" columns="*" rows="*,auto" cssClass="grid-container" chart="line" tap="buttonTap">
+                <Image src="~/images/indicadores/3.png" stretch="aspectFit" />
+                <Label row="1" textWrap="true" text="Marcas más solicitadas" />
+            </GridLayout>
+            <GridLayout row="1" col="1" columns="*" rows="*,auto" cssClass="grid-container" chart="area" tap="buttonTap">
+                <Image src="~/images/indicadores/4.png" stretch="aspectFit" />
+                <Label row="1" textWrap="true" text="Horas pico por tienda" />
+            </GridLayout>
+        </GridLayout>
+    </StackLayout>
+</Page>

@@ -1,0 +1,18 @@
+Page {
+    background-color: #555555;
+}
+
+.grid-container{
+    background-color: #ffffff;
+    margin: 6;
+    text-align: center;
+}
+.grid-container Image{
+    vertical-align: center;
+    margin:10;
+}
+
+.grid-container Label{
+    vertical-align: center;
+    margin: 6;
+}

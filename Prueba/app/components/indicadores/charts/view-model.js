@@ -5,6 +5,10 @@ var builder = require("ui/builder");
 var app = require("application");
 var utils = require("utils/utils");
 
+
+var viewModel = require('../../users/users-view-model');
+
+
 var ChartExamplesDataModel = (function () {
     function ChartExamplesDataModel(useCache) {
         this._useCache = useCache;
@@ -45,70 +49,238 @@ var ChartExamplesDataModel = (function () {
     };
     Object.defineProperty(ChartExamplesDataModel.prototype, "categoricalSource", {
         get: function () {
+            // if (this._categoricalSource) {
+            //     return this._categoricalSource;
+            // }
+            // return this._categoricalSource = [
+            //     { Category: "Jockey", Amount: 2.0 },
+            //     { Category: "Marzano", Amount: 1.0 },
+            //     { Category: "Miraflores", Amount: 3.0 },
+            //     { Category: "Angamos", Amount: 4.0 }
+            // ];
             if (this._categoricalSource) {
                 return this._categoricalSource;
             }
-            return this._categoricalSource = [
-                { Category: "Jockey", Amount: 2.0 },
-                { Category: "Marzano", Amount: 1.0 },
-                { Category: "Miraflores", Amount: 3.0 },
-                { Category: "Angamos", Amount: 4.0 }
-            ];
+
+            var items = viewModel.get("listItems");
+            function compare(a, b) {
+                if (a.details.tiendaExpand.nombre < b.details.tiendaExpand.nombre)
+                    return -1;
+                if (a.details.tiendaExpand.nombre > b.details.tiendaExpand.nombre)
+                    return 1;
+                return 0;
+            }
+            items.sort(compare);
+
+            var datos = [];
+            var a = [], b = [], prev;
+            items.sort();
+            for (var i = 0; i < items.length; i++) {
+                if (items[i].details.tiendaExpand.nombre !== prev) {
+                    a.push(items[i].details.tiendaExpand.nombre);
+                    b.push(1);
+                } else {
+                    b[b.length - 1]++;
+                }
+                prev = items[i].details.tiendaExpand.nombre;
+            }
+
+            for (var i = a.length - 1; i >= 0; i--) {
+                var num = parseFloat(parseInt(b[i]));
+                datos.push({ Category: a[i] + " (" + b[i] + ")", Amount: num });
+            }
+
+            return this._categoricalSource = datos;
+
         },
         enumerable: true,
         configurable: true
     });
     Object.defineProperty(ChartExamplesDataModel.prototype, "categoricalSource2", {
         get: function () {
+            // if (this._categoricalSource2) {
+            //     return this._categoricalSource2;
+            // }
+            // return this._categoricalSource2 = [
+            //     { Category: "Mar", Amount: 5 },
+            //     { Category: "Apr", Amount: 15 },
+            //     { Category: "May", Amount: 3 },
+            //     { Category: "Jun", Amount: 45 }
+            // ];
+
             if (this._categoricalSource2) {
                 return this._categoricalSource2;
             }
-            return this._categoricalSource2 = [
-                { Category: "Mar", Amount: 5 },
-                { Category: "Apr", Amount: 15 },
-                { Category: "May", Amount: 3 },
-                { Category: "Jun", Amount: 45 }
-            ];
+
+            var items = viewModel.get("listItems");
+            function compare(a, b) {
+                if (a.details.tiendaExpand.nombre < b.details.tiendaExpand.nombre)
+                    return -1;
+                if (a.details.tiendaExpand.nombre > b.details.tiendaExpand.nombre)
+                    return 1;
+                return 0;
+            }
+            items.sort(compare);
+
+            var datos = [];
+            var a = [], b = [], c = [], prev;
+            items.sort();
+            for (var i = 0; i < items.length; i++) {
+                if (items[i].details.tiendaExpand.nombre !== prev) {
+                    a.push(items[i].details.tiendaExpand.nombre);
+                    b.push(1);
+                    if (items[i].details.estado) {
+                        c.push(1);
+                    } else {
+                        c.push(0);
+                    }
+                } else {
+                    b[b.length - 1]++;
+                    if (items[i].details.estado) {
+                        c[c.length - 1]++;
+                    }
+                }
+                prev = items[i].details.tiendaExpand.nombre;
+            }
+
+            for (var i = a.length - 1; i >= 0; i--) {
+                var num = parseFloat(parseInt(b[i]) - parseInt(c[i]));
+                datos.push({ Category: a[i] + " (" + b[i] + ")", Amount: num });
+            }
+
+            return this._categoricalSource2 = datos;
+
         },
         enumerable: true,
         configurable: true
     });
     Object.defineProperty(ChartExamplesDataModel.prototype, "categoricalSource3", {
         get: function () {
+            // if (this._categoricalSource3) {
+            //     return this._categoricalSource3;
+            // }
+            // return this._categoricalSource3 = [
+            //     { Category: "Mar", Amount: 65 },
+            //     { Category: "Apr", Amount: 56 },
+            //     { Category: "May", Amount: 89 },
+            //     { Category: "Jun", Amount: 68 }
+            // ];
+
             if (this._categoricalSource3) {
                 return this._categoricalSource3;
             }
-            return this._categoricalSource3 = [
-                { Category: "Mar", Amount: 65 },
-                { Category: "Apr", Amount: 56 },
-                { Category: "May", Amount: 89 },
-                { Category: "Jun", Amount: 68 }
-            ];
+
+            var items = viewModel.get("listItems");
+            function compare(a, b) {
+                if (a.details.tiendaExpand.nombre < b.details.tiendaExpand.nombre)
+                    return -1;
+                if (a.details.tiendaExpand.nombre > b.details.tiendaExpand.nombre)
+                    return 1;
+                return 0;
+            }
+            items.sort(compare);
+
+            var datos = [];
+            var a = [], b = [], c = [], prev;
+            items.sort();
+            for (var i = 0; i < items.length; i++) {
+                if (items[i].details.tiendaExpand.nombre !== prev) {
+                    a.push(items[i].details.tiendaExpand.nombre);
+                    b.push(1);
+                    if (items[i].details.estado) {
+                        c.push(1);
+                    } else {
+                        c.push(0);
+                    }
+                } else {
+                    b[b.length - 1]++;
+                    if (items[i].details.estado) {
+                        c[c.length - 1]++;
+                    }
+                }
+                prev = items[i].details.tiendaExpand.nombre;
+            }
+
+            for (var i = a.length - 1; i >= 0; i--) {
+                var num = parseFloat(parseInt(c[i]));
+                datos.push({ Category: a[i] + " (" + b[i] + ")", Amount: num });
+            }
+
+            return this._categoricalSource3 = datos;
+
         },
         enumerable: true,
         configurable: true
     });
     Object.defineProperty(ChartExamplesDataModel.prototype, "areaSource", {
         get: function () {
+            // if (this._areaSource) {
+            //     return this._areaSource;
+            // }
+            // return this._areaSource = [
+            //     { Category: "9", Amount: 0 },
+            //     { Category: "10", Amount: 5 },
+            //     { Category: "11", Amount: 20 },
+            //     { Category: "12", Amount: 10 },
+            //     { Category: "13", Amount: 50 },
+            //     { Category: "14", Amount: 40 },
+            //     { Category: "15", Amount: 30 },
+            //     { Category: "16", Amount: 20 },
+            //     { Category: "17", Amount: 15 },
+            //     { Category: "18", Amount: 40 },
+            //     { Category: "19", Amount: 50 },
+            //     { Category: "20", Amount: 60 },
+            //     { Category: "21", Amount: 65 },
+            //     { Category: "22", Amount: 30 }
+            // ];
+
             if (this._areaSource) {
                 return this._areaSource;
             }
-            return this._areaSource = [
-                { Category: "9", Amount: 0 },
-                { Category: "10", Amount: 5 },
-                { Category: "11", Amount: 20 },
-                { Category: "12", Amount: 10 },
-                { Category: "13", Amount: 50 },
-                { Category: "14", Amount: 40 },
-                { Category: "15", Amount: 30 },
-                { Category: "16", Amount: 20 },
-                { Category: "17", Amount: 15 },
-                { Category: "18", Amount: 40 },
-                { Category: "19", Amount: 50 },
-                { Category: "20", Amount: 60 },
-                { Category: "21", Amount: 65 },
-                { Category: "22", Amount: 30 }
-            ];
+
+            var items = viewModel.get("listItems");
+            function compare(a, b) {
+                if (a.details.CreatedAt < b.details.CreatedAt)
+                    return -1;
+                if (a.details.CreatedAt > b.details.CreatedAt)
+                    return 1;
+                return 0;
+            }
+            items.sort(compare);
+
+            var datos = [];
+            var a = [], b = [], prev;
+            items.sort();
+
+            var weekday = new Array(7);
+            weekday[0] = "Lun";
+            weekday[1] = "Mar";
+            weekday[2] = "Mié";
+            weekday[3] = "Jue";
+            weekday[4] = "Vie";
+            weekday[5] = "Sáb";
+            weekday[6] = "Dom";
+
+            for (var i = 0; i < items.length; i++) {
+                var d = new Date(items[i].details.CreatedAt);
+
+                if (weekday[d.getDay()] !== prev) {
+                    a.push(weekday[d.getDay()]);
+                    b.push(1);
+                } else {
+                    b[b.length - 1]++;
+                }
+                prev = weekday[d.getDay()];
+            }
+
+            for (var i = a.length - 1; i >= 0; i--) {
+                var num = parseFloat(parseInt(b[i]));
+                datos.push({ Category: a[i] + " (" + b[i] + ")", Amount: num });
+            }
+
+            return this._areaSource = datos;
+
+
         },
         enumerable: true,
         configurable: true
@@ -163,26 +335,50 @@ var ChartExamplesDataModel = (function () {
             if (this._pieSource2) {
                 return this._pieSource2;
             }
-            return this._pieSource2 = [
-                { Company: "Google", Amount: 20.0 },
-                { Company: "Apple", Amount: 30.0 },
-                { Company: "Microsoft", Amount: 10.0 },
-                { Company: "Oracle", Amount: 8.0 }
-            ];
+            var items = viewModel.get("listItems");
+
+            function compare(a, b) {
+                if (a.details.credito < b.details.credito)
+                    return -1;
+                if (a.details.credito > b.details.credito)
+                    return 1;
+                return 0;
+            }
+            items.sort(compare);
+
+            var datos = [];
+            var a = [], b = [], prev;
+
+            for (var i = 0; i < items.length; i++) {
+                if (items[i].details.credito !== prev) {
+                    a.push(items[i].details.credito);
+                    b.push(1);
+                } else {
+                    b[b.length - 1]++;
+                }
+                prev = items[i].details.credito;
+            }
+
+            for (var i = 0; i < a.length; i++) {
+                var num = parseFloat(parseInt(b[i])).toFixed(1);
+                datos.push({ Company: a[i] + " (" + b[i] + ")", Amount: num });
+            }
+
+            return this._pieSource2 = datos;
         },
         enumerable: true,
         configurable: true
     });
     Object.defineProperty(ChartExamplesDataModel.prototype, "pieSource3", {
         get: function () {
-            var datos = getData();
-            alert(JSON.stringify(datos));
             if (this._pieSource3) {
                 return this._pieSource3;
             }
             return this._pieSource3 = [
-                { Level: "xxxx", Amount: 180.0 },
-                { Level: "yyy", Amount: 60.0 }
+                { Level: "Google", Amount: 20.0 },
+                { Level: "Apple", Amount: 30.0 },
+                { Level: "Microsoft", Amount: 10.0 },
+                { Level: "Oracle", Amount: 8.0 }
             ];
         },
         enumerable: true,
@@ -318,30 +514,3 @@ var ChartTypeItem = (function (_super) {
 } (observable.Observable));
 exports.ChartTypeItem = ChartTypeItem;
 
-
-var dataService = require('~/dataProviders/backendServices');
-function getData(filter) {
-    filter = {};
-    var expandExp,
-        data = dataService.data('tiendas');
-
-    expandExp = {
-        // tienda: {
-        //     "TargetTypeName": "tiendas",
-        //     "ReturnAs": "tiendaExpand",
-        // },
-    };
-
-    return data.expand(expandExp).get()
-        .then(onRequestSuccess.bind(this))
-        .catch(onRequestFail.bind(this));
-}
-
-function onRequestSuccess(data) {
-    return data.result;
-}
-
-function onRequestFail(err) {
-    alert(JSON.stringify(err));
-    return err;
-}

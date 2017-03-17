@@ -26,8 +26,13 @@ var dataModel = new models.ChartExamplesDataModel(true);
 function pageNavigatingTo(args) {
     var page = args.object;
     page.bindingContext = dataModel;
-    var itemToLoad = dataModel.barTypes[0];
+
+    var context = page.navigationContext;
+    var itemToLoad = dataModel.barTypes[context];
     loadItem(page, itemToLoad);
+
+     var dateObj = new Date();
+    page.getViewById("nombreGrafico").text = "Solicitudes por tienda - " + ((parseInt(dateObj.getUTCMonth()) + 1) < 10 ? "0" + (parseInt(dateObj.getUTCMonth()) + 1) : (parseInt(dateObj.getUTCMonth()) + 1)) + "/" + dateObj.getUTCFullYear();
 }
 exports.pageNavigatingTo = pageNavigatingTo;
 function pageNavigatingFrom(args) {

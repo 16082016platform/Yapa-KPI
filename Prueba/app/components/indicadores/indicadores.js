@@ -29,5 +29,6 @@ exports.buttonTap = function (args) {
         transition: {
             name: "slide"
         },
+        context: chart.grafico,
     });
 }

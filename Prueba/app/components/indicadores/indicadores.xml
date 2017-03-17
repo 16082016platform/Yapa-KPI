@@ -4,21 +4,21 @@
     </Page.actionBar>
     <StackLayout>
         <GridLayout columns="*,*" rows="*,*" >
-            <GridLayout row="0" col="0" columns="*" rows="*,auto" cssClass="grid-container" chart="bar" tap="buttonTap">
+            <GridLayout row="0" col="0" columns="*" rows="*,auto" cssClass="grid-container" chart="bar" grafico="3" tap="buttonTap">
                 <Image src="~/images/indicadores/1.png" stretch="aspectFit" />
-                <Label row="1" textWrap="true" text="Tiempo de atención" />
+                <Label row="1" textWrap="true" text="Solicitudes por tienda" />
             </GridLayout>
             <GridLayout row="0" col="1" columns="*" rows="*,auto" cssClass="grid-container" chart="pie" tap="buttonTap">
                 <Image src="~/images/indicadores/2.png" stretch="aspectFit" />
-                <Label row="1" textWrap="true" text="Categorías más solicitadas"  />
+                <Label row="1" textWrap="true" text="Créditos más solicitados"  />
             </GridLayout>
-            <GridLayout row="1" col="0" columns="*" rows="*,auto" cssClass="grid-container" chart="line" tap="buttonTap">
+            <GridLayout row="1" col="0" columns="*" rows="*,auto" cssClass="grid-container" chart="bar" grafico="4" tap="buttonTap">
                 <Image src="~/images/indicadores/3.png" stretch="aspectFit" />
-                <Label row="1" textWrap="true" text="Marcas más solicitadas" />
+                <Label row="1" textWrap="true" text="Solicitudes aprovadas vs. no aprovadas" />
             </GridLayout>
             <GridLayout row="1" col="1" columns="*" rows="*,auto" cssClass="grid-container" chart="area" tap="buttonTap">
                 <Image src="~/images/indicadores/4.png" stretch="aspectFit" />
-                <Label row="1" textWrap="true" text="Horas pico por tienda" />
+                <Label row="1" textWrap="true" text="Días con más solicitudes" />
             </GridLayout>
         </GridLayout>
     </StackLayout>

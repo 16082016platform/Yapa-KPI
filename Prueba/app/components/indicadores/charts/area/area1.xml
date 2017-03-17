@@ -1,5 +1,5 @@
 <GridLayout rows="auto, *" xmlns:chart="nativescript-telerik-ui-pro/chart" backgroundColor="#FFFFFF">
-    <Label cssClass="chart-example-tytle-style" text="Marcas más solicitadas, marzo 2017" textWrap="true"/>
+    <Label id="nombreGrafico" cssClass="chart-example-tytle-style" textWrap="true"/>
     <chart:RadCartesianChart row="1" id="chart" selectionMode="Single">
         <chart:RadCartesianChart.series>
             <chart:AreaSeries seriesName="Area" categoryProperty="Category" items="{{ areaSource }}" valueProperty="Amount" selectionMode="Series"/>

@@ -21,8 +21,11 @@ var dataModel = new models.ChartExamplesDataModel(false);
 function pageNavigatingTo(args) {
     var page = args.object;
     page.bindingContext = dataModel;
-    var itemToLoad = dataModel.pieTypes[2];
+    var itemToLoad = dataModel.pieTypes[1];
     loadItem(page, itemToLoad);
+
+    var dateObj = new Date();
+    page.getViewById("nombreGrafico").text = "Tipo de crédito más solicitado - " + ((parseInt(dateObj.getUTCMonth()) + 1) < 10 ? "0" + (parseInt(dateObj.getUTCMonth()) + 1) : (parseInt(dateObj.getUTCMonth()) + 1)) + "/" + dateObj.getUTCFullYear();
 }
 exports.pageNavigatingTo = pageNavigatingTo;
 function scrollViewLoaded(args) {

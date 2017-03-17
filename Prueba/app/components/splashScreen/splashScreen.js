@@ -3,6 +3,7 @@ var frameModule = require("ui/frame");
 var imageModule = require("ui/image");
 
 function pageLoaded(args) {
+    _fetchData();
     // Hide the iOS UINavigationBar so it doesn't get in the way of the animation
     if (frameModule.topmost().ios) {
         frameModule.topmost().ios.navBarVisibility = "never";
@@ -55,7 +56,7 @@ function pageLoaded(args) {
                 frameModule.topmost().navigate({
                     moduleName: "components/homeView/homeView",
                     animated: false,
-                    clearHistory: true, 
+                    clearHistory: true,
                 });
             });
     });
@@ -68,3 +69,28 @@ function pageLoaded(args) {
 
 }
 exports.pageLoaded = pageLoaded;
+
+
+
+
+
+var service = require('~/components/users/users-service'),
+    viewModel = require('~/components/users/users-view-model');
+function _fetchData() {
+    return service.getAllRecords();
+};
+
+_fetchData()
+    .then(function (result) {
+        var itemsList = [];
+        result.forEach(function (item) {
+            itemsList.push({
+                details: item
+            });
+        });
+        viewModel.set('listItems', itemsList);
+        viewModel.set('isLoading', false);
+    })
+    .catch(function onCatch() {
+        viewModel.set('isLoading', false);
+    });

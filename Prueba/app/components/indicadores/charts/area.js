@@ -28,6 +28,11 @@ function pageNavigatingTo(args) {
     page.bindingContext = dataModel;
     var itemToLoad = dataModel.areaTypes[0];
     loadItem(page, itemToLoad);
+
+    
+    var dateObj = new Date();
+    page.getViewById("nombreGrafico").text = "Días con más solicitudes - " + ((parseInt(dateObj.getUTCMonth()) + 1) < 10 ? "0" + (parseInt(dateObj.getUTCMonth()) + 1) : (parseInt(dateObj.getUTCMonth()) + 1)) + "/" + dateObj.getUTCFullYear();
+
 }
 exports.pageNavigatingTo = pageNavigatingTo;
 function pageNavigatingFrom(args) {

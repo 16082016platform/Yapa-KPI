@@ -1,5 +1,5 @@
 <GridLayout rows="auto, *" xmlns:chart="nativescript-telerik-ui-pro/chart">
-    <Label text="Monthly sales revenue, 2016" cssClass="chart-example-tytle-style" textWrap="true"/>
+    <Label id="nombreGrafico" cssClass="chart-example-tytle-style" textWrap="true"/>
     <chart:RadCartesianChart row="1" id="chart" selectionMode="Single">
         <chart:RadCartesianChart.horizontalAxis>
             <chart:LinearAxis lineColor="#b0b0b0" lineThickness="1" />
@@ -8,7 +8,12 @@
             <chart:CategoricalAxis lineColor="#b0b0b0" lineThickness="1" />
         </chart:RadCartesianChart.verticalAxis>
         <chart:RadCartesianChart.series>
-            <chart:BarSeries seriesName="Bar" categoryProperty="Category" items="{{ categoricalSource }}" valueProperty="Amount" selectionMode="DataPoint" />
+            <!--<chart:BarSeries seriesName="Bar" categoryProperty="Category" items="{{ categoricalSource }}" valueProperty="Amount" selectionMode="DataPoint" />-->
+            <chart:BarSeries seriesName="Bar" showLabels="true" categoryProperty="Category" items="{{ categoricalSource }}" stackMode="Stack" valueProperty="Amount" selectionMode="Series" >
+                <chart:BarSeries.labelStyle>
+                    <chart:PointLabelStyle textColor="White" textSize="10"  />
+                </chart:BarSeries.labelStyle>
+            </chart:BarSeries>
         </chart:RadCartesianChart.series>
         <chart:RadCartesianChart.grid>
             <chart:RadCartesianChartGrid horizontalLinesVisible="true" 

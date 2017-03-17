@@ -16,6 +16,40 @@
       "title": "Indicadores",
       "addToNavigation": true,
       "icon": "home"
+    },
+    {
+      "type": "NativeScript:view",
+      "name": "users",
+      "components": [
+        {
+          "type": "NativeScript:editableList",
+          "serverSideSorting": false,
+          "serverSidePaging": false,
+          "listExtraFields": [],
+          "detailExtraFields": [],
+          "addScreenExtraFields": [],
+          "editScreenExtraFields": [],
+          "components": [],
+          "name": "usersModel",
+          "dataProvider": "backendServices",
+          "collection": "Users",
+          "headerField": "DisplayName",
+          "subHeaderField": "Email",
+          "isMapView": false,
+          "addItemForm": false,
+          "editItemForm": false,
+          "deleteItemButton": false,
+          "pullToRefresh": false,
+          "endlessScroll": false,
+          "detailHeaderFieldSource": "static",
+          "detailHeaderFieldValue": "Detail",
+          "detailSubHeaderField": "DisplayName",
+          "detailDescriptionField": "Email"
+        }
+      ],
+      "title": "Users",
+      "addToNavigation": true,
+      "icon": "organize"
     }
   ],
   "dataProviders": [

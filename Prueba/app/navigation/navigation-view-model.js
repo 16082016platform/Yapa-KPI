@@ -11,6 +11,10 @@ menuItems = [{
     "title": "Indicadores",
     "moduleName": "components/indicadores/indicadores",
     "icon": "\ue0dd"
+}, {
+    "title": "Users",
+    "moduleName": "components/users/users",
+    "icon": "\ue0eb"
 }];
 
 navigationViewModel.set('menuItems', menuItems);
